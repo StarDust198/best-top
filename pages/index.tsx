@@ -1,12 +1,16 @@
-import { Htag, Button, Ptag, Tag } from '../components';
+import { useEffect, useState } from 'react';
+import { Htag, Button, Ptag, Tag, Rating } from '../components';
+import { withLayout } from '../layout/Layout';
 
-export default function Home(): JSX.Element {
+function Home(): JSX.Element {
+  const [rating, setRating] = useState<number>(4);
+
   return (
     <>
-      <Htag tag="h1">Text</Htag>
-      <Button appearance="primary">Кнопка</Button>
+      <Htag tag="h1">Hello NextJS</Htag>
+      <Button appearance="primary">Button 1</Button>
       <Button appearance="ghost" arrow="down">
-        Кнопка2
+        Button 2
       </Button>
       <Ptag size="l">Большой интересный обзац хрен пойми о чём</Ptag>
       <Ptag>Средний интересный обзац хрен пойми о чём</Ptag>
@@ -24,6 +28,9 @@ export default function Home(): JSX.Element {
       <Tag size="s" color="primary">
         zxc
       </Tag>
+      <Rating rating={rating} isEditable setRating={setRating} />
     </>
   );
 }
+
+export default withLayout(Home);
